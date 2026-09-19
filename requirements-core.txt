@@ -1,0 +1,16 @@
+# 純收集版：由 make_collect_kit.py 從主專案產生，請勿手動修改。
+# 拿掉了訓練用的 torch、scikit-learn；其餘版本限制與原因同主專案。
+
+# 操作選單（收集資料 / 訓練模型 / 測試辨識）需要的套件。
+# Windows 一鍵環境（setup_env.py）與 start.py 的自動安裝都讀這份，版本限制只改這裡。
+#
+# 版本上限都有原因，改之前請先確認：
+# - mediapipe <0.10.30：0.10.30 起移除了本專案使用的 solutions API（hands / face_mesh），
+#   裝到新版一開收集程式就會 AttributeError
+# - numpy <2.0：mediapipe 0.10.x 以 numpy 1.x 編譯，裝到 2.x 會 crash
+# - opencv-python <4.12：4.12 起要求 numpy 2.x，和上一條衝突
+# - 以上加起來，Python 只能用 3.9～3.12（numpy 1.x 沒有 3.13 以上的版本）
+numpy>=1.26,<2.0
+opencv-python>=4.9.0,<4.12
+mediapipe>=0.10.7,<0.10.30
+Pillow>=10.0.0
